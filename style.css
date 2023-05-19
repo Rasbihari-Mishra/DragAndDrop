@@ -1,0 +1,52 @@
+body {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 300px;
+  height: 300px;
+	display: block;
+}
+
+td {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+.undoButton {
+	width: 60px;
+  height: 40px;
+  margin: 30px 50px 60px 120px;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  cursor: move;
+}
+
+#box-100 { background-color: #FF0000; }
+#box-200 { background-color: #C0C0C0; }
+#box-300 { background-color: #f75e05; }
+#box-400 { background-color: #FFFF00; }
+#box-500 { background-color: #00FF00; }
+#box-600 { background-color: #00FFFF; }
+#box-700 { background-color: #FF00FF; }
+#box-800 { background-color: #f7b705; }
+#box-900 { background-color: #808080; }
+
+.box.fade {
+  opacity: 0.5;
+}
+
+.box.animate {
+  transition: transform 0.5s;
+}
