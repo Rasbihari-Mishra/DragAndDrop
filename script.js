@@ -64,6 +64,45 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const undoButton = document.getElementById('undoButton');
 	undoButton.addEventListener('click', handleUndo);
+
+	function generateRandomNumber() {
+		return Math.floor(Math.random() * 900) + 100;
+	}
+	
+	function generateRandomColor() {
+		const letters = '0123456789ABCDEF';
+		let color = '#';
+		for (let i = 0; i < 6; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	}
+	
+	function addRow() {
+		const table = document.getElementById('table');
+		const newRow = document.createElement('tr');
+	
+		for (let i = 1; i <= 3; i++) {
+			const newCell = document.createElement('td');
+			const newBox = document.createElement('div');
+			const randomNumber = generateRandomNumber();
+			const randomColor = generateRandomColor();
+	
+			newBox.id = `box-${randomNumber}`;
+			newBox.className = 'box';
+			newBox.draggable = true;
+			newBox.innerText = randomNumber;
+			newBox.style.backgroundColor = randomColor;
+	
+			newCell.appendChild(newBox);
+			newRow.appendChild(newCell);
+		}
+	
+		table.appendChild(newRow);
+	}
+	
+	const addRowButton = document.getElementById('addRowButton');
+	addRowButton.addEventListener('click', addRow);
 	boxes.forEach((box) => {
 		box.addEventListener('dragstart', handleDragStart);
 		box.addEventListener('dragover', handleDragOver);
@@ -71,3 +110,4 @@ window.addEventListener('DOMContentLoaded', () => {
 		box.addEventListener('dragend', handleDragEnd);
 	});
 });
+

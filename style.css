@@ -1,5 +1,5 @@
 body {
-	display: grid;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 }
@@ -17,6 +17,11 @@ td {
   height: 100px;
 }
 
+.addRowButton {
+	width: 60px;
+  height: 40px;
+}
+
 .undoButton {
 	width: 60px;
   height: 40px;
@@ -27,7 +32,9 @@ td {
   width: 80px;
   height: 80px;
   margin: 10px;
+  display: flex;
   text-align: center;
+  justify-content: center;
   line-height: 80px;
   font-weight: bold;
   cursor: move;
