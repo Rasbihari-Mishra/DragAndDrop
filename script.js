@@ -93,6 +93,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			newBox.draggable = true;
 			newBox.innerText = randomNumber;
 			newBox.style.backgroundColor = randomColor;
+
+			newBox.addEventListener('dragstart', handleDragStart);
+			newCell.addEventListener('dragover', handleDragOver);
+			newCell.addEventListener('drop', handleDrop);
 	
 			newCell.appendChild(newBox);
 			newRow.appendChild(newCell);
