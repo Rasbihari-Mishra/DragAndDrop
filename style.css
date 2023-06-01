@@ -18,14 +18,15 @@ td {
 }
 
 .addRowButton {
-	width: 60px;
+	width: 160px;
   height: 40px;
+  margin: 20px 20px 60px 60px;
 }
 
 .undoButton {
-	width: 60px;
+	width: 160px;
   height: 40px;
-  margin: 30px 50px 60px 120px;
+  margin: 20px 20px 60px 60px;
 }
 
 .box {
