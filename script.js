@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const boxes = document.querySelectorAll('.box');
   let sourceBox = null;
 	let previousMove = null;
+	let undoStack = [];
 
   function handleDragStart(event) {
     sourceBox = this;
@@ -33,6 +34,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			sourceBox.innerHTML = previousMove.destinationContent;
 			document.getElementById(sourceBox.id).style.backgroundColor = previousMove.destinationColor;
 			document.getElementById(this.id).style.backgroundColor = previousMove.sourceColor;
+	
+			undoStack.push(previousMove);
 			this.classList.add('animate');
 			setTimeout(() => {
 				this.classList.remove('animate');
@@ -47,18 +50,20 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function handleDragEnd() {
+		sourceBox.classList.remove('fade');
 		sourceBox = null;
 	}
 
 	function handleUndo() {
-		if (previousMove) {
-			const { sourceBox, sourceContent,sourceColor, destinationBox, destinationContent, destinationColor } = previousMove;
+		if (undoStack.length > 0) {
+			const lastSwap = undoStack.pop();
+			const { sourceBox, sourceContent,sourceColor, destinationBox, destinationContent, destinationColor } = lastSwap;
 			sourceBox.innerHTML = sourceContent;
 			destinationBox.innerHTML = destinationContent;
 			document.getElementById(sourceBox.id).style.backgroundColor = sourceColor;
 			document.getElementById(destinationBox.id).style.backgroundColor = destinationColor;
-			previousMove = null;
-			undoButton.disabled = true;
+		} else {
+			undoButton.disabled = true;		
 		}
 	}
 
